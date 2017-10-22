@@ -33,7 +33,7 @@
         for (var i = 0; i < oBtn.length; i++) {
             oBtn[i].index = i;
             oBtn[i].onclick = function() {
-                this.index == oBtn.length - 1 && (oDiv.style.cssText = "");
+                this.index == oBtn.length - 1 && (oDiv.style.cssText = "");//当点击为重置按钮时，清除当前的样式。
                 changeStyle(oDiv, oAtt[this.index], oVal[this.index])
             }
         }
