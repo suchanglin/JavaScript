@@ -1,2 +1,6 @@
 使用说明：http://www.cosmissy.com/myfocus/tutorials.html
 使用API：http://www.cosmissy.com/myfocus/api.html
+
+更多风格在js文件夹
+
+网站地址  http://demo.jb51.net/js/myfocus/demo.html#1
