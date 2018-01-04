@@ -1,7 +1,6 @@
 JavaScript练习题
 
 若干案例，练习原生JS技能。
-题目源于Ferris，网址： http://fgm.cc/learn/
 练习题列表
 
 第一课
