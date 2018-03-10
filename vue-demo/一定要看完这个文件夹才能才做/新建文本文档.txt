@@ -1,0 +1,11 @@
+# 安装依赖，使用淘宝资源命令 cnpm
+cnpm install
+
+# 启动应用，地址为 localhost:8080
+cnpm run dev
+
+
+执行成功后，访问 http://localhost:8080 即可看到界面：
+
+
+（这是利用npm方式实现路由的例子，把这个文件夹删了）
