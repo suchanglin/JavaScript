@@ -1,4 +1,0 @@
-1.牢记制作新闻中心的时候，日期要放标题起前面，然后用float：right，可以解决IE浏览器下的错位，也就使用所有浏览器了。
-
-2去掉li标签的小圆点，并添加图标：list-style-type:none;背景图片background：url();
-而list-style-image:url()出现外溢。
