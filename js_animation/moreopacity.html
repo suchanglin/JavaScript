@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>多物体透明度动画</title>
+</head>
+<style type="text/css">
+	body,div{
+		margin: 0;
+		padding: 0;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		margin: 10px;
+		float: left;
+		filter: alpha(opacity:30);
+		opacity: 0.3;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementsByTagName('div');
+		for(var i=0;i<oDiv.length;i++){
+			oDiv[i].alpha = 30;
+			oDiv[i].onmouseover = function(){
+				startMove(this,100);
+			}
+			oDiv[i].onmouseout = function(){
+				startMove(this,30);
+			}
+		}
+	}
+	//var timer = null;
+	//var alpha = 30;
+	function startMove(obj,iTarget){
+		//var oDiv = document.getElementById('div1');
+		clearInterval(obj.timer);   //关闭定时器，以防叠加
+		obj.timer = setInterval(function(){
+			var speed = 0;
+			if(obj.alpha > iTarget){
+				speed = -10;
+			}
+			else{
+				speed = 10;
+			}
+			if(obj.alpha == iTarget){
+				clearInterval(obj.timer);
+			}
+			else{
+				obj.alpha+=speed;
+				obj.style.filter = 'alpha(opacity:'+obj.alpha+')';  //基于IE
+				obj.style.opacity = obj.alpha/100;   //基于火狐/chrome，满值是1，所以除以100
+
+			}
+		},30)
+	}
+</script>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+	<div id="div4"></div>
+</body>
+</html>

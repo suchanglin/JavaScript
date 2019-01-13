@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js透明度动画</title>
+</head>
+<style type="text/css">
+	body,div{
+		margin: 0;
+		padding: 0;
+	}
+	#div1{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		filter: alpha(opacity:30);
+		opacity: 0.3;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementById('div1');
+		oDiv.onmouseover = function(){
+			startMove(100);
+		}
+		oDiv.onmouseout = function(){
+			startMove(30);
+		}
+	}
+	var timer = null;
+	var alpha = 30;
+	function startMove(iTarget){
+		var oDiv = document.getElementById('div1');
+		clearInterval(timer);   //关闭定时器，以防叠加
+		timer = setInterval(function(){
+			var speed = 0;
+			if(alpha > iTarget){
+				speed = -10;
+			}
+			else{
+				speed = 10;
+			}
+			if(alpha == iTarget){
+				clearInterval(timer);
+			}
+			else{
+				alpha+=speed;
+				oDiv.style.filter = 'alpha(opacity:'+alpha+')';  //基于IE
+				oDiv.style.opacity = alpha/100;   //基于火狐/chrome，满值是1，所以除以100
+
+			}
+		},30)
+	}
+</script>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js动画实例</title>
+	<style type="text/css">
+		#move{
+			width: 300px;
+			height: 200px;
+			margin: 10px auto;
+			border: 1px solid #ccc;
+		}
+		#move a{
+			display: inline-block;
+			width: 58px;
+			height: 35px;
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			background-color: #fff;
+			text-align: center;
+			margin: 10px 17px;
+			position: relative;
+			padding-top: 40px;
+			color: #9c9c9c;
+			font-size: 12px;
+			text-decoration: none;
+			line-height: 25px;
+			overflow: hidden;
+		}
+		#move a i{
+			position: absolute;
+			top: 20px;
+			left: 0;
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			filter: alpha(opacity=100);
+			opacity: 1;
+		}
+		#move a:hover{
+			color: #F00;
+		}
+		#move img{
+			border: none;
+		}
+	</style>
+	<script src="js/move.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oMove = document.getElementById('move');
+			var aList = oMove.getElementsByTagName('a');
+			for(var i=0;i<aList.length;i++){
+				aList[i].onmouseenter = function(){
+					var _this = this.getElementsByTagName('i')[0];
+					startMove(_this,{top:-25,opacity:0},function(){
+						_this.style.top = 30+'px';
+						startMove(_this,{top:25,opacity:100});
+					});
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="move">
+		<a href="#"><i><img src="images/caipiao.png" width="20px" height="20px"></i><p>彩票</p></a>
+		<a href="#"><i><img src="images/caipiao.png" width="20px" height="20px"></i><p>彩票</p></a>
+		<a href="#"><i><img src="images/caipiao.png" width="20px" height="20px"></i><p>彩票</p></a>
+		<a href="#"><i><img src="images/caipiao.png" width="20px" height="20px"></i><p>彩票</p></a>
+		<a href="#"><i><img src="images/caipiao.png" width="20px" height="20px"></i><p>彩票</p></a>
+		<a href="#"><i><img src="images/caipiao.png" width="20px" height="20px"></i><p>彩票</p></a>
+	</div>
+</body>
+</html>

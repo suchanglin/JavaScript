@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js多物体运动</title>
+	<style type="text/css">
+		body,ul{
+			padding: 0;
+			margin: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		ul li{
+			width: 200px;
+			height: 100px;
+			background-color: yellow;
+			margin-bottom: 20px;
+			filter: alpha(opacity:30);/* 针对 IE8 以及更早的版本 */
+			opacity: 0.3;
+			border: 1px solid #000;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			// var aLi = document.getElementsByTagName('li');
+			// for(var i = 0;i < aLi.length;i++){
+			// 	aLi[i].timer = null;
+			// 	aLi[i].onmouseover = function(){
+			// 		startMove(this,400);
+			// 	}
+			// 	aLi[i].onmouseout = function(){
+			// 		startMove(this,200);
+			// 	}
+			// }
+			var Li1 = document.getElementById('li1');
+			var Li2 = document.getElementById('li2');
+			Li1.onmouseover = function(){
+				startMove(this,'height',400);
+			}
+			Li1.onmouseout = function(){
+				startMove(this,'height',100);
+			}
+			Li2.onmouseover = function(){
+				startMove(this,'width',400);
+			}
+			Li2.onmouseout = function(){
+				startMove(this,'width',200);
+			}
+		}
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}
+			else{
+				return getComputedStyle(obj,false)[attr];
+			}
+		}
+		//var timer = null;
+		var alpha = 30;
+		function startMove(obj,attr,iTarget){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var icur = parseInt(getStyle(obj,attr));   //改成height可以高度变化
+				var speed = (iTarget-icur)/8;
+				speed = speed > 0?Math.ceil(speed):Math.floor(speed);
+				if(icur == iTarget){
+					clearInterval(obj.timer);
+				}else{
+					obj.style[attr] = icur + speed + 'px';     //改成height可以高度变化
+				}
+			},30)
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li id="li1"></li>
+		<li id="li2"></li>
+
+	</ul>
+</body>
+</html>
