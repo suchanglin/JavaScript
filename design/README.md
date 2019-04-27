@@ -1,5 +1,5 @@
 # learn-javascript-design-pattern
-学习javascript设计模式，记录的小例子~
+
 
 ### 第一篇 - 面对对象编程
 
