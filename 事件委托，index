@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="tab">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var tab = (function() {
+            var d = document;
+            d.getElementById('tab').onclick = function(e) {
+                var e = e || window.event,
+                    target = e.target || e.srcElement;
+                console.log(getindex(target));
+
+                function getindex(current) {
+                    var lis = d.getElementById('tab').getElementsByTagName('li');
+                    for (var i = 0; lis.length; i++) {
+                        if (lis[i] == current) {
+                            return i + 1;
+                        }
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
